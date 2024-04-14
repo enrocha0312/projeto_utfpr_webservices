@@ -33,6 +33,8 @@ public class ClienteService {
     }
     public Cliente update(Cliente cliente, Integer id){
         cliente.setId(id);
+        Cidade cidadeAchadaPorNome = cidadeRepository.findByNome(cliente.getCidade().getNome()).get();
+        cliente.setCidade(cidadeAchadaPorNome);
         return clienteRepository.save(cliente);
     }
 }
